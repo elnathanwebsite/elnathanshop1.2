@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lupa Kata Sandi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+        
+        .form-container {
+            background-color: #111;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin: 50px auto;
+            border-radius: 8px;
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 4px;
+            color: #fff;
+        }
+        
+        .button-link {
+            width: 100%;
+            padding: 12px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            display: block;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        .button-link:hover {
+            background-color: #777;
+        }
+        
+        .message {
+            text-align: center;
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        .link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        a {
+            color: #aaa;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #fff;
+        }
+        
+        @media (max-width: 600px) {
+            .form-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Lupa Kata Sandi</h2>
+        <input type="email" id="forgot-email" placeholder="Email" required>
+        <a href="SIG UP.html" class="button-link" onclick="resetPassword()">Reset Password</a>
+        <div class="message" id="forgot-message"></div>
+    </div>
+
+    <script>
+        function resetPassword() {
+            const email = document.getElementById('forgot-email').value;
+            const savedEmail = localStorage.getItem('email');
+
+            if (email === savedEmail) {
+                // Jika email ditemukan, arahkan pengguna ke halaman untuk daftar ulang
+                document.getElementById('forgot-message').textContent = 'Password reset successful! Redirecting to Sign Up page...';
+                setTimeout(() => {
+                    window.location.href = 'signup.html'; // Arahkan ke halaman Sign Up untuk mendaftar ulang
+                }, 1000);
+            } else {
+                document.getElementById('forgot-message').textContent = 'Email not found. Please try again.';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
